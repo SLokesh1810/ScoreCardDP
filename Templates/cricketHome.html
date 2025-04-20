@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cricket</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='/css/mainPageStyle.css')}}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body style="background-image: url('/static/photos/cricketBG.jpg');">
+    <div class="loader-wrapper">
+        <div class="spinner">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+    <div id="title">
+        <a href="{{url_for('mainPageLogin', username=username )}}"><img class="homelogo" src="{{ url_for('static', filename='photos/homelogo.png') }}" alt="logo"></a>
+        <img class="logo" src="{{ url_for('static', filename='photos/logo.png') }}" alt="">
+        <div class="profile">
+            <img class="proImg" src="{{ url_for('static', filename='photos/Avatar.png') }}" alt="profile pic">
+            <span id="username">
+                {{ username }}
+            </span>
+            <button class="logoutbtn" onclick="window.location.href='{{ url_for('homePage') }}'"><i class="fa fa-power-off"></i></button>
+        </div>
+    </div>
+    <nav class="topnav" id="myTopnav">
+        <a class="cricLink" style="background-color: #fefae0; color: #606c38;">Cricket <span style="text-shadow: 0 0 0 var(--txtcolor);" class="cricIcon">🏏</span></a>
+        <a href="{{url_for('footballHome', username=username)}}" class="footLink">Football ⚽︎</a>
+    </nav>
+
+    <div class="ContentBox">
+        <button id="addNewCric" class="addNew" onclick="window.location.href='{{ url_for('cricketPage') }}'">Create new game</button>
+
+        <div class="recentGames">
+
+            {% if tablesdet == {} %}
+                <h2>Create your first game now</h2>
+            {% endif %} 
+
+            {% for table_name, game in tablesdet.items() %}
+            <div class="recentGameCon" onclick="window.location.href='{{ url_for('cricketView', gameName=game.game_name, userid=userid) }}'">
+                <h2 class="cricGameName">{{ game.game_name.upper() }}</h2>
+                <p class="dateNtime">{{ game.dateNtime }}</p>
+                <hr>
+        
+                <div class="matchRow">
+                    <div class="teamName">{{ game.teamA }}</div>
+                    <div class="score">{{ game.scoreA }} {{ game.oversA }}</div>
+                </div>
+        
+                <div class="matchRow">
+                    <div class="teamName">{{ game.teamB }}</div>
+                    <div class="score">{{ game.scoreB }} {{ game.oversB }}</div>
+                </div>
+                <p class="winnerDet">{{ game.winner }}</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <script>
+        window.addEventListener("load", () => {
+            const loader = document.querySelector(".loader-wrapper");
+            loader.style.opacity = "0";
+            loader.style.visibility = "hidden";
+            loader.style.transition = "opacity 0.5s ease-out, visibility 0.5s ease-out";
+        });
+    </script>
+</body>
+</html>

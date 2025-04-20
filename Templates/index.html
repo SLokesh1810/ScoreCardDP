@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/LogStyle.css') }}">
+</head>
+
+<body>
+    <div class="loader-wrapper">
+        <div class="spinner">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+    <div id="container">
+        <h1>LOGIN</h1>
+        <form id="loginForm" action="/LoginPage" method="POST">
+            <input id="UserID" name="UserID" type="text" placeholder="UserID" required>
+            <span id="uid"></span>
+            <input id="Password" name="Password" type="password" placeholder="Password" required>
+            <span id="pword"></span>
+            <button id="loginSubmit">Login</button>
+        </form>
+        <div class="msgfromflask">
+            {% if user_exists == False %}
+                <p>User does not exists, create new</p>
+            {% endif %}
+            {% if error %}
+                <p>Wrong passcode!! Try again</p>
+            {% endif %}
+        </div>
+        <br>
+        <h6>Not a member? <a href="{{url_for("signUp")}}">sign up</a></h6>
+    </div>
+
+    <script src="{{ url_for('static', filename='javascripts/LogJS.js') }}"></script>
+
+</body>
+
+</html>

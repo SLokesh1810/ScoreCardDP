@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static', filename='/css/cricketView.css')}}">
+    <title>Cricket Scorecard</title>
+</head>
+
+<body>
+    <div class="loader-wrapper">
+        <div class="spinner">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+
+    <div class="nav-btn-con">
+        <img class="back" src="{{ url_for('static', filename='photos/backImg.png') }}" onclick="window.location.href = '{{ url_for('cricketHome', gameName=gameName, userid=userid) }}'">
+        <img class="logo" src="{{ url_for('static', filename='photos/logo.png') }}">
+        <img class="delete" src="{{ url_for('static', filename='photos/binImg.png') }}" onclick="deleteGame()">
+    </div>
+
+    <h2 id="gameName" class="gameName">CRICKET SCORECARD - {{ gameName }}</h2>
+    <p class="winner">{{ overalldet[0][6] }}</p>
+
+    <div class="scorecard">
+        <div class="team-box">
+            <h2 class="team-name">{{ overalldet[0][0] }}</h2>
+            <p class="score">{{ overalldet[0][2] }} <span class="overs">{{ overalldet[0][3] }}</span></p>
+        </div>
+
+        <div class="team-box">
+            <h2 class="team-name">{{ overalldet[0][1] }}</h2>
+            <p class="score">{{ overalldet[0][4] }} <span class="overs">{{ overalldet[0][5] }}</span></p>
+        </div>
+    </div>
+
+
+    <div class="content-section">
+        <nav id="nav-bar">
+            <a class="tab teamA active" onclick="toggleTab('teamA', event)">{{ overalldet[0][0] }}</a>
+            <a class="tab teamB" onclick="toggleTab('teamB', event)">{{ overalldet[0][1] }}</a>
+        </nav>
+
+        <div class="tab-content teamA active" id="teamA">
+            <table class="teamAtab">
+                <tr>
+                    <th class="playerNames">Player Name</th>
+                    <th>Runs</th>
+                    <th>Balls</th>
+                    <th>Fours</th>
+                    <th>Six</th>
+                    <th>S/R</th>
+                </tr>
+                {% for player in firstBatdet %}
+                <tr>
+                    <td>{{ player[0] }}</td>
+                    <td>{{ player[1] }}</td>
+                    <td>{{ player[2] }}</td>
+                    <td>{{ player[3] }}</td>
+                    <td>{{ player[4] }}</td>
+                    <td>{{ player[5] }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+
+            <p>Total Score : <span>{{ overalldet[0][2] }}</span></p>
+            <p>Extras : <span>{{ overalldet[0][7] }}</span></p>
+
+            <table class="teamBtab">
+                <tr>
+                    <th class="playerNames">Player Name</th>
+                    <th>Overs</th>
+                    <th>Runs</th>
+                    <th>Wickets</th>
+                    <th>Economy</th>
+                </tr>
+
+                {% for player in firstBowldet %}
+                <tr>
+                    <td>{{ player[0] }}</td>
+                    <td>{{ player[1] }}</td>
+                    <td>{{ player[2] }}</td>
+                    <td>{{ player[3] }}</td>
+                    <td>{{ player[4] }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+
+        <div class="tab-content teamB" id="teamB">
+            <table class="teamBtab">
+                <tr>
+                    <th class="playerNames">Player Name</th>
+                    <th>Runs</th>
+                    <th>Balls</th>
+                    <th>Fours</th>
+                    <th>Six</th>
+                    <th>S/R</th>
+                </tr>
+                {% for player in secondBatdet %}
+                <tr>
+                    <td>{{ player[0] }}</td>
+                    <td>{{ player[1] }}</td>
+                    <td>{{ player[2] }}</td>
+                    <td>{{ player[3] }}</td>
+                    <td>{{ player[4] }}</td>
+                    <td>{{ player[5] }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+
+            <p>Total Score : <span>{{ overalldet[0][4] }}</span></p>
+            <p>Extras : <span>{{ overalldet[0][8] }}</span></p>
+
+            <table class="teamAtab">
+                <tr>
+                    <th class="playerNames">Player Name</th>
+                    <th>Overs</th>
+                    <th>Runs</th>
+                    <th>Wickets</th>
+                    <th>Economy</th>
+                </tr>
+                {% for player in secondBowldet %}
+                <tr>
+                    <td>{{ player[0] }}</td>
+                    <td>{{ player[1] }}</td>
+                    <td>{{ player[2] }}</td>
+                    <td>{{ player[3] }}</td>
+                    <td>{{ player[4] }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+
+    <script>
+        window.addEventListener("load", () => {
+            const loader = document.querySelector(".loader-wrapper");
+            loader.style.opacity = "0";
+            loader.style.visibility = "hidden";
+            loader.style.transition = "opacity 0.5s ease-out, visibility 0.5s ease-out";
+        });
+        function toggleTab(tabId, event) {
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+            document.getElementById(tabId).classList.add('active');
+            document.querySelectorAll('#nav-bar .tab').forEach(el => el.classList.remove('active'));
+            event.target.classList.add('active');
+        }
+
+        function deleteGame() {
+            fetch('/cricket/cricketView', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    delete: true,
+                    gameName: "{{ gameName }}"
+                })
+            })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success && data.redirect) {
+                        alert("This game has been deleted")
+                        window.location.href = data.redirect; // This actually redirects
+                    } else {
+                        console.error("Upload failed:", data.error);
+                    }
+                })
+                .catch(err => console.error("Fetch error:", err));
+        }
+        
+    </script>
+</body>
+
+</html>

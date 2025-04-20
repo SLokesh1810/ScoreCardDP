@@ -1,0 +1,552 @@
+@import url('https://fonts.cdnfonts.com/css/maria-2');
+
+:root {
+    --bgcolor: #fefae0;
+    --txtcolor: #606c38;
+}
+
+body {
+    font-family: 'Maria', 'sans-serif';
+    background-image: url("/static/photos/cricketBG.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    background-color: var(--bgcolor);
+    color: var(--txtcolor);
+}
+
+.loader-wrapper{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: var(--bgcolor);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.spinner {
+    position: absolute;
+    width: 9px;
+    height: 9px;
+}
+
+.spinner div {
+    position: absolute;
+    width: 50%;
+    height: 150%;
+    background: #000000;
+    transform: rotate(calc(var(--rotation) * 1deg)) translate(0, calc(var(--translation) * 1%));
+    animation: spinner-fzua35 1s calc(var(--delay) * 1s) infinite ease;
+}
+
+.spinner div:nth-child(1) {
+    --delay: 0.1;
+    --rotation: 36;
+    --translation: 150;
+}
+
+.spinner div:nth-child(2) {
+    --delay: 0.2;
+    --rotation: 72;
+    --translation: 150;
+}
+
+.spinner div:nth-child(3) {
+    --delay: 0.3;
+    --rotation: 108;
+    --translation: 150;
+}
+
+.spinner div:nth-child(4) {
+    --delay: 0.4;
+    --rotation: 144;
+    --translation: 150;
+}
+
+.spinner div:nth-child(5) {
+    --delay: 0.5;
+    --rotation: 180;
+    --translation: 150;
+}
+
+.spinner div:nth-child(6) {
+    --delay: 0.6;
+    --rotation: 216;
+    --translation: 150;
+}
+
+.spinner div:nth-child(7) {
+    --delay: 0.7;
+    --rotation: 252;
+    --translation: 150;
+}
+
+.spinner div:nth-child(8) {
+    --delay: 0.8;
+    --rotation: 288;
+    --translation: 150;
+}
+
+.spinner div:nth-child(9) {
+    --delay: 0.9;
+    --rotation: 324;
+    --translation: 150;
+}
+
+.spinner div:nth-child(10) {
+    --delay: 1;
+    --rotation: 360;
+    --translation: 150;
+}
+
+@keyframes spinner-fzua35 {
+
+    0%,
+    10%,
+    20%,
+    30%,
+    50%,
+    60%,
+    70%,
+    80%,
+    90%,
+    100% {
+        transform: rotate(calc(var(--rotation) * 1deg)) translate(0, calc(var(--translation) * 1%));
+    }
+
+    50% {
+        transform: rotate(calc(var(--rotation) * 1deg)) translate(0, calc(var(--translation) * 1.5%));
+    }
+}
+
+h1 {
+    margin: 30px;
+    color: var(--txtcolor);
+    text-align: center;
+    font-size: 40px;
+}
+
+.container1 {
+    background-color: var(--txtcolor);
+    color: var(--bgcolor);
+    max-width: 600px;
+    text-align: center;
+    padding: 20px;
+    border-radius: 8px;
+    margin: auto;
+    box-shadow: 0 0 10px var(--txtcolor);
+}
+
+.GameName {
+    width: 40%;
+    margin: auto;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    background-color: var(--txtcolor);
+    color: var(--bgcolor);
+    padding: 30px;
+    border-radius: 10px;
+}
+
+.GameName input {
+    margin: 20px;
+}
+
+.teamNameDis {
+    background-color: var(--bgcolor);
+    margin-top: 0;
+    color: var(--txtcolor);
+    border-radius: 8px;
+    display: none;
+    margin-top: 0;
+}
+
+#plname1 {
+    transition: all 0.3s ease-in-out;
+}
+
+#inp,
+.inp1 {
+    font-family: 'Maria', 'sans-serif';
+    width: 40px;
+    padding: 5px;
+    text-align: center;
+    font-size: 16px;
+    border: 2px solid var(--bgcolor);
+    border-radius: 4px;
+}
+
+#lab {
+    font-weight: 700;
+}
+
+.lab {
+    font-weight: 700;
+    margin: 20px;
+}
+
+.player-input {
+    font-family: 'Maria', 'sans-serif';
+    width: 200px;
+    padding: 8px;
+    margin: 10px;
+    border: 2.6px solid var(--txtcolor);
+    border-radius: 10px;
+    font-size: 16px;
+    transition: 0.3s ease-in-out;
+}
+
+.player-input:focus {
+    border-color: var(--txtcolor);
+    outline: none;
+}
+
+.main-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    margin-top: 80px;
+}
+
+#tossSection {
+    background-color: var(--txtcolor);
+    color: var(--bgcolor);
+    width: 30%;
+    display: block;
+    justify-items: center;
+    align-items: center;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0 0 10px var(--txtcolor);
+
+}
+
+#tossSection button {
+    width: 60px;
+}
+
+.team-container {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.scorecard-container {
+    width: 50%;
+    max-width: 500px;
+    padding: 20px;
+    border: 2px solid var(--txtcolor);
+    text-align: center;
+    background-color: var(--txtcolor);
+    color: var(--bgcolor);
+    border-radius: 10px;
+    margin-top: 0;
+}
+
+#gameNameDis {
+    background-color: var(--bgcolor);
+    color: var(--txtcolor);
+    border-radius: 10px;
+}
+
+.a,
+.a1 {
+    width: 300px;
+    padding: 20px;
+    text-align: center;
+    background-color: var(--bgcolor);
+    border-radius: 10px;
+}
+
+.controls {
+    text-align: center;
+    margin-top: 20px;
+    width: 100%;
+    border-radius: 10px;
+    border: 3px solid var(--bgcolor);
+}
+
+.scoreboard {
+    width: 85%;
+    margin: auto;
+    border-collapse: collapse;
+    font-size: 15px;
+    background-color: var(--bgcolor);
+    color: var(--txtcolor);
+    height: 20px;
+    overflow: hidden;
+    border-radius: 15px;
+    border: 3px solid var(--bgcolor);
+}
+
+.scoreboard tr,
+td {
+    padding: 5px;
+    border: 2px solid var(--txtcolor);
+    text-align: left;
+}
+
+.scoreboard .lastCol {
+    width: 200px;
+}
+
+.bowlerTab {
+    width: 85%;
+    border-collapse: collapse;
+    font-size: 15px;
+    background-color: var(--bgcolor);
+    color: var(--txtcolor);
+    height: 20px;
+    overflow: hidden;
+    border-radius: 15px;
+    border: 3px solid var(--bgcolor);
+    margin: auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.bowlerTab td,
+tr {
+    width: 50%;
+    padding: 5px;
+    border: 2px solid var(--txtcolor);
+    text-align: left;
+    height: 40px;
+}
+
+.bowlerTab select {
+    font-family: 'Maria', 'sans-serif';
+    width: 150px;
+    border: 2px solid var(--txtcolor);
+    border-radius: 10px;
+    font-size: 13px;
+    transition: 0.3s ease-in-out;
+}
+
+.bowlerTab select:focus {
+    border-color: var(--txtcolor);
+    outline: none;
+}
+
+#currentBowler{
+    padding: 5px;
+}
+
+.timelineTab {
+    width: 90%;
+    margin: auto;
+    border-collapse: collapse;
+    font-size: 15px;
+    background-color: var(--bgcolor);
+    color: var(--txtcolor);
+    overflow: hidden;
+    border-radius: 15px;
+    border: 3px solid var(--bgcolor);
+}
+
+.timeline tr,
+td {
+    padding: 5px;
+    text-align: left;
+    height: 40px;
+}
+
+.timeline {
+    display: inline-flex;
+}
+
+.eachBalls {
+    background-color: var(--txtcolor);
+    color: var(--bgcolor);
+    font-size: 13px;
+    text-align: center;
+    width: 18px;
+    margin: 0;
+    margin-right: 2px;
+    border-radius: 10px;
+}
+
+.wktBall {
+    background-color: var(--bgcolor);
+    color: red;
+    font-size: 13px;
+    text-align: center;
+    width: 18px;
+    margin: 0;
+    margin-right: 2px;
+    border: 1px solid var(--txtcolor);
+    border-radius: 10px;
+}
+
+.extraBall {
+    background-color: var(--txtcolor);
+    color: var(--bgcolor);
+    font-size: 13px;
+    text-align: center;
+    width: 35px;
+    margin: 0;
+    margin-right: 2px;
+    border-radius: 10px;
+}
+
+.btns {
+    font-family: 'Maria', 'sans-serif';
+    background-color: var(--bgcolor);
+    color: var(--txtcolor);
+    border: none;
+    padding: 10px;
+    margin: 5px;
+    font-size: 14px;
+    cursor: pointer;
+    border-radius: 5px;
+    border: 2px solid transparent;
+    transition: 0.5s ease-in-out;
+}
+
+.btns:hover {
+    background-color: var(--txtcolor);
+    border: 2px solid var(--bgcolor);
+    color: var(--bgcolor);
+}
+
+.btn,
+.btn1 {
+    font-family: 'Maria', 'sans-serif';
+    background-color: var(--bgcolor);
+    color: var(--txtcolor);
+    border: none;
+    padding: 10px;
+    margin: 5px;
+    font-size: 14px;
+    cursor: pointer;
+    border-radius: 5px;
+    border: 2px solid transparent;
+    transition: 0.5s ease-in-out;
+}
+
+.btn:hover,
+.btn1:hover {
+    background-color: var(--txtcolor);
+    border: 2px solid var(--bgcolor);
+    color: var(--bgcolor);
+}
+
+.extraBtn {
+    background-color: var(--bgcolor);
+    border-radius: 10px;
+    display: inline-flex;
+    color: var(--txtcolor);
+    margin-top: 10px;
+    margin-bottom: 5px;
+    width: 95%;
+    padding: 4px;
+}
+
+.extraBtn p {
+    width: 20%;
+    text-align: left;
+}
+
+.extraBtn .extra {
+    background-color: var(--txtcolor);
+    color: var(--bgcolor);
+    margin: 3px;
+    display: inline;
+}
+
+.scorecard-table {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.scorecard-table table {
+    border-collapse: collapse;
+    width: 80%;
+    max-width: 700px;
+    background-color: var(--bgcolor);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.scorecard-table th,
+.scorecard-table td {
+    border: 1px solid var(--txtcolor);
+    padding: 10px;
+    font-size: 16px;
+}
+
+.scorecard-table th {
+    background-color: var(--txtcolor);
+    color: white;
+}
+
+.scorecard-table tr:nth-child(even) {
+    background-color: #f5f5dc;
+}
+
+.hidden {
+    display: none;
+}
+
+#finalScorecard table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+#finalScorecard th,
+#finalScorecard td {
+    border: 1px solid var(--txtcolor);
+    padding: 8px;
+    text-align: center;
+}
+
+#finalScorecard th {
+    background-color: #e8e6c8;
+}
+
+#finalScorecard {
+    text-align: center;
+    margin-top: 30px;
+}
+
+#finalScorecard h3 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+#finalScorecard button {
+    margin: 5px 10px;
+    padding: 8px 16px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 700px) {
+
+    .container1,
+    .scorecard-container,
+    #tossSection,
+    .GameName {
+        width: 90% !important;
+    }
+
+    .scoreboard {
+        flex-direction: column;
+    }
+
+    .extraBtn {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .btn,
+    .btn1 {
+        width: 95%;
+    }
+}

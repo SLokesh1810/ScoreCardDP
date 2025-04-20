@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Live Cricket Scorecard</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='/css/cricketPage.css' )}}" />
+</head>
+
+<body>
+    <div class="loader-wrapper">
+        <div class="spinner">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+    <h1>CRICKET</h1>
+
+    <div class="GameName">
+        <label for="gamename" class="lab">Enter the game name</label><br>
+        <input type="text" class="player-input" id="gameName" placeholder="Enter game name" /><br>
+        <span id="gameNameErr" class="lab" style="color: red;display: none;padding: 5px;">*enter game name to
+            continue*</span>
+        <button class="btn" onclick="gameNameSubmit()">SUBMIT</button>
+    </div>
+
+    <div class="main-container" style="display: none;">
+        <div class="team-container">
+            <!-- Team 1 -->
+            <div class="a" id="a">
+                <div class="container1" id="plname1">
+                    <label for="name" id="lab-team1"> Enter Team 1 name </label><br />
+                    <input type="text" id="team1-name" class="player-input" placeholder="Enter Team 1 name" />
+                    <br />
+                    <label for="noofplayer" class="lab" id="playernum-team1-lab">Enter number of players in team
+                        1:</label><br>
+                    <input type="text" class="player-input" placeholder="Enter no. of players" id="playernum-team1" />
+                    <h2 id="display-team1" class="teamNameDis">TEAM 1 PLAYERS</h2>
+                    <label for="playernames" class="lab" id="playernum-team1-names" style="display: none;">Enter player
+                        names :</label>
+                    <button class="btn" onclick="playerName('team1')">SUBMIT</button>
+                </div>
+            </div>
+
+            <!-- Team 2 -->
+            <div class="a1" id="a1" style="display: none;">
+                <div class="container1" id="plname2">
+                    <label for="name" id="lab-team2"> Enter Team 2 name </label><br />
+                    <input type="text" id="team2-name" class="player-input" placeholder="Enter Team 2 name" />
+                    <br />
+                    <label for="noofplayer" class="lab" id="playernum-team2-lab">Enter number of players in team
+                        2:</label>
+                    <input type="text" class="player-input" placeholder="Enter no. of players" id="playernum-team2" />
+                    <h2 id="display-team2" class="teamNameDis">TEAM 2 PLAYERS</h2>
+                    <label for="playernames" class="lab" id="playernum-team2-names" style="display: none;">Enter player
+                        names :</label>
+                    <button class="btn" onclick="playerName('team2')">SUBMIT</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Toss Logic UI -->
+        <div id="tossSection" style="display: none; margin-top: 20px">
+            <p>
+                <strong id="ov">Overs :</strong><input type="text" class="player-input" id="inp" />
+            </p>
+            <h3 id="tossResult"></h3>
+            <p>
+                <strong>Choose to:</strong><br>
+                <button class="btn" id="chooseBat">Bat</button>
+                <button class="btn" id="chooseBowl">Bowl</button>
+            </p>
+        </div>
+
+        <!-- Scorecard Box -->
+        <div class="scorecard-container" style="display: none;">
+            <div class="container">
+                <h1 style="color: var(--bgcolor);">Scorecard</h1>
+                <h1 id="gameNameDis"></h1>
+                <h3 id="teamname"></h3>
+                <table class="scoreboard">
+                    <tr>
+                        <td>
+                            <strong>Score:</strong>
+                        </td>
+                        <td>
+                            <span id="totalScore">0</span>/<span id="wickets">0</span>
+                        </td>
+                        <td class="lastCol">
+                            <span id="batsmanOnStrike">Batsman 1</span><sup>*</sup>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <strong>Overs:</strong>
+                        </td>
+                        <td>
+                            <span id="overs">0</span>.<span id="balls">0</span><span id="total-overs"></span>
+                        </td>
+                        <td class="lastCol">
+                            <span id="batsmanNonStrike">Batsman 2</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <strong>Extras:</strong>
+                        </td>
+                        <td>
+                            <span id="extras">0</span>
+                        </td>
+                        <td>
+                            <span id="inningsDet">1st Innings</span><br>
+                            <span id="target"></span>
+                        </td>
+                    </tr>
+                </table>
+
+                <div id="bowlerArea">
+                    <table class="bowlerTab">
+                        <tr>
+                            <td>
+                                <label for="bowlerSelect"><strong>Select Bowler:</strong></label>
+                            </td>
+                            <td class="lastCol">
+                                <select id="bowlerSelect" class="player-input"></select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <strong>Current Bowler:</strong>
+                            </td>
+                            <td class="lastCol">
+                                <span id="currentBowler">N/A</span>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+
+                <table class="timelineTab">
+                    <tr>
+                        <td>TIMELINE :</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div id="timeline" class="timeline"></div>
+                        </td>
+                    </tr>
+                </table>
+
+
+
+                <div class="controls">
+                    <strong>Runs column</strong><br>
+                    <button class="btn" onclick="scoreRun(0)">Dot</button>
+                    <button class="btn" onclick="scoreRun(1)">1 Run</button>
+                    <button class="btn" onclick="scoreRun(2)">2 Runs</button>
+                    <button class="btn" onclick="scoreRun(3)">3 Runs</button>
+                    <button class="btn" onclick="scoreRun(4)">4 (Boundary)</button>
+                    <button class="btn" onclick="scoreRun(6)">6 (Six)</button>
+                    <hr>
+                    <strong>Wicket column</strong><br>
+                    <button class="btn wicket" onclick="wicketFall()">Wicket</button>
+                    <hr>
+                    <strong>Extras column</strong>
+                    <div class="extraBtn">
+                        <p>Wide</p>
+                        <button class="btn extra" onclick="wideBall(0)">+0</button>
+                        <button class="btn extra" onclick="wideBall(1)">+1</button>
+                        <button class="btn extra" onclick="wideBall(2)">+2</button>
+                        <button class="btn extra" onclick="wideBall(3)">+3</button>
+                        <button class="btn extra" onclick="wideBall(4)">+4</button>
+                    </div>
+                    <br>
+                    <div class="extraBtn">
+                        <p>No-Ball</p>
+                        <button class="btn extra" onclick="noBall(0)">+0</button>
+                        <button class="btn extra" onclick="noBall(1)">+1</button>
+                        <button class="btn extra" onclick="noBall(2)">+2</button>
+                        <button class="btn extra" onclick="noBall(3)">+3</button>
+                        <button class="btn extra" onclick="noBall(4)">+4</button>
+                        <button class="btn extra" onclick="noBall(6)">+6</button>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Final Scorecard Container -->
+        <div id="finalScorecard" style="display: none;">
+            <h3>Final Scorecard</h3>
+        </div>
+
+        <div id="finalScoreSummary"
+            style="display: none; padding: 20px; border: 1px solid #ccc; margin-top: 20px; background-color: #f9f9f9;">
+            <!-- Final scorecard will be injected here -->
+        </div>
+
+        <script src="{{url_for('static', filename='/javascripts/cricketPage.js' )}}"></script>
+</body>
+
+</html>

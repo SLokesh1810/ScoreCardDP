@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Main page</title>
+    <link rel="stylesheet" href="{{url_for('static', filename="/css/mainPageStyle.css" )}}">
+</head>
+
+<body>
+    <div class="loader-wrapper">
+        <div class="spinner">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+    <div id="title">
+        <img class="logo" src="{{ url_for('static', filename='photos/logo.png') }}" alt="">
+        <div class="divTopBtns">
+            <button id="login" class="topbtns" onclick="location.href='{{ url_for('Login') }}'">LOGIN</button><button
+                id="signUp" class="topbtns" onclick="location.href='{{ url_for('signUp') }}'">SIGNUP</button>
+        </div>
+    </div>
+    <nav class="topnav" id="myTopnav">
+        <a style="cursor: no-drop;" class="cricLink">Cricket <span class="cricIcon">🏏</span></a>
+        <a style="cursor: no-drop;" class="footLink">Football ⚽︎</a>
+    </nav>
+
+    <div class="ContentBox">
+        <h2>SIGN IN TO CONTINUE</h2>
+    </div>
+
+    <script>
+        window.addEventListener("load", () => {
+            const loader = document.querySelector(".loader-wrapper");
+            loader.style.opacity = "0";
+            loader.style.visibility = "hidden";
+            loader.style.transition = "opacity 0.5s ease-out, visibility 0.5s ease-out";
+        });
+    </script>
+</body>
+
+</html>

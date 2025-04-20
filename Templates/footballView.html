@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Football Scorecard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/footballView.css') }}">
+</head>
+
+<body>
+    <div class="loader-wrapper">
+        <div class="spinner">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+    <div class="nav-btn-con">
+        <img class="back" src="{{ url_for('static', filename='photos/backImg.png') }}" onclick="window.location.href ='{{ url_for('footballHome', gameName=gameName, userid=userid) }}'">
+        <img class="logo" src="{{ url_for('static', filename='photos/logo.png') }}">
+        <img class="delete" src="{{ url_for('static', filename='photos/binImg.png') }}" onclick="deleteGame()">
+    </div>
+
+    <h2 class="gameName">FOOTBALL SCORECARD - {{ gameName }}</h2>
+
+    <div class="main-container">
+
+        <div class="score-team">
+            <div class="team-container">
+                <h1 class="team-name">{{ overalldet[0][0] }}</h1>
+            </div>
+
+            <h2 id="score">{{ overalldet[0][2] }}<p class="time">({{ overalldet[0][3] }})</p>
+            </h2>
+
+            <div class="team-container">
+                <h1 class="team-name">{{ overalldet[0][1] }}</h1>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <nav id="nav-bar">
+                <a class="tab keynav active" onclick="toggleTab('keyevents', event)">Key Events</a>
+                <a class="tab lineupnav" onclick="toggleTab('lineup', event)">Line Up</a>
+            </nav>
+
+            <div class="tab-content keyevents active" id="keyevents">
+                <table class="keyevents">
+                    <tr>
+                        <th class="teamA">{{ overalldet[0][0] }}</th>
+                        <th class="teamB">{{ overalldet[0][1] }}</th>
+                    </tr>
+                    {% for events in eventdet %}
+                    <tr>
+                        <td>{{ events[0] }}</td>
+                        <td>{{ events[1] }}</td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+
+            <div class="tab-content lineup" id="lineup">
+                <h2>{{ overalldet[0][0] }} Lineup</h2>
+                <table>
+                    <tr class="teamArow">
+                        <th class="PlayerNames">Player</th>
+                        <th>Goals</th>
+                        <th>Assists</th>
+                        <th>🟨 Cards</th>
+                        <th>🟥 Card</th>
+                    </tr>
+                    {% for player in teamAdet %}
+                    <tr>
+                        <td>{{ player[0] }}</td>
+                        <td>{{ player[1] }}</td>
+                        <td>{{ player[2] }}</td>
+                        <td>{{ player[3] }}</td>
+                        <td>{{ player[4] }}</td>
+                    </tr>
+                    {% endfor %}
+                </table>
+
+                <h2>{{ overalldet[0][1] }} Lineup</h2>
+                <table>
+                    <tr class="teamBrow">
+                        <th class="PlayerNames">Player</th>
+                        <th>Goals</th>
+                        <th>Assists</th>
+                        <th>🟨 Cards</th>
+                        <th>🟥 Card</th>
+                    </tr>
+                    {% for player in teamBdet %}
+                    <tr>
+                        <td>{{ player[0] }}</td>
+                        <td>{{ player[1] }}</td>
+                        <td>{{ player[2] }}</td>
+                        <td>{{ player[3] }}</td>
+                        <td>{{ player[4] }}</td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        window.addEventListener("load", () => {
+            const loader = document.querySelector(".loader-wrapper");
+            loader.style.opacity = "0";
+            loader.style.visibility = "hidden";
+            loader.style.transition = "opacity 0.5s ease-out, visibility 0.5s ease-out";
+        });
+        function toggleTab(tabId, event) {
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+            document.getElementById(tabId).classList.add('active');
+            document.querySelectorAll('#nav-bar .tab').forEach(el => el.classList.remove('active'));
+            event.target.classList.add('active');
+        }
+        function deleteGame() {
+            fetch('/footballHome/view', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    delete: true,
+                    gameName: "{{ gameName }}"
+                })
+            })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success && data.redirect) {
+                        alert("This game has been deleted")
+                        window.location.href = data.redirect; // This actually redirects
+                    } else {
+                        console.error("Upload failed:", data.error);
+                    }
+                })
+                .catch(err => console.error("Fetch error:", err));
+        }
+    </script>
+</body>
+
+</html>

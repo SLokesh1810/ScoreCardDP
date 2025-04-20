@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Main page</title>
+    <link rel="stylesheet" href="{{url_for("static", filename="/css/mainPageStyle.css")}}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+    <div class="loader-wrapper">
+        <div class="spinner">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+
+    <div id="title">
+        <a href="{{url_for('mainPageLogin', username=username )}}"><img class="homelogo" src="{{ url_for('static', filename='photos/homelogo.png') }}" alt="logo"></a>
+        <img class="logo" src="{{ url_for('static', filename='photos/logo.png') }}" alt="">
+        <div class="profile">
+            <img class="proImg" src="{{ url_for('static', filename='photos/Avatar.png') }}" alt="profile pic">
+            <span id="username">
+                {{ username }}
+            </span>
+            <button class="logoutbtn" onclick="window.location.href='{{ url_for('homePage') }}'"><i class="fa fa-power-off"></i></button>
+        </div>
+    </div>
+    <nav class="topnav" id="myTopnav">
+        <a href="{{ url_for("cricketHome", username=username ) }}" class="cricLink">Cricket <span class="cricIcon">🏏</span></a>
+        <a href="{{ url_for("footballHome", username=username ) }}" class="footLink">Football ⚽︎</a>
+    </nav>
+
+    <script>
+        window.addEventListener("load", () => {
+            const loader = document.querySelector(".loader-wrapper");
+            loader.style.opacity = "0";
+            loader.style.visibility = "hidden";
+            loader.style.transition = "opacity 0.5s ease-out, visibility 0.5s ease-out";
+        });
+    </script>
+    
+</body>
+
+</html>

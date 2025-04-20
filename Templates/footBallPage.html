@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Football Scorecard</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{{url_for("static", filename="/css/footBallPage.css" )}}">
+</head>
+
+<body>
+
+    <h1>Football Scorecard</h1>
+    <h1 class="nameOfTheGame" id="nameOfGame"></h1><br>
+
+        <div class="duration">
+            <label for="match-duration">Match Duration (in minutes):</label>
+            <input type="number" id="match-duration" min="1" value="90">
+            <button onclick="setMatchDuration()">Set Duration</button>
+        </div>
+
+
+    <div class="container" style="display: none;">
+
+
+        <div class="scoreboard">
+            <div class="team">
+                <h2 id="teamA-name">Team A</h2>
+                <p class="score" id="teamA-score">0</p>
+                <div id="teamA-keyevents" class="goal-scorers"></div>
+            </div>
+            <div class="stopwatch">
+                <h3 id="half-name"></h3>
+                <p class="time" id="timer">00:00</p><span id="half-time"></span><br>
+                <button class="timeBtns" onclick="startTimer()"><span class="glyphicon glyphicon-play"></span></button>
+                <button class="timeBtns" onclick="pauseTimer()"><i class="fa fa-pause"></i></button><br>
+                <button class="timeBtns" onclick="resetTimer()"><i class="fa fa-refresh"></i></button>
+            </div>
+            <div class="team">
+                <h2 id="teamB-name">Team B</h2>
+                <p class="score" id="teamB-score">0</p>
+                <div id="teamB-keyevents" class="goal-scorers"></div>
+            </div>
+        </div>
+
+        <div class="players">
+            <div>
+                <h2 id="teamAname">Team A Players</h2>
+                <div id="teamA-players"></div>
+            </div>
+            <div>
+                <h2 id="teamBname">Team B Players</h2>
+                <div id="teamB-players"></div>
+            </div>
+        </div>
+
+        <button onclick="endMatch()" id="end-btn">End Match</button>
+        <div id="end-message" style="font-weight: bold; color: red; font-size: 1.2em;"></div>
+
+
+    </div>
+
+    <script src="{{url_for("static", filename="/javascripts/footBallPage.js" )}}"></script>
+
+</body>
+
+</html>

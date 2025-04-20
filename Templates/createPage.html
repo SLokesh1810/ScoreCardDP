@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Teams</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='/css/createPage.css' )}}">
+</head>
+
+<body>
+    <div class="loader-wrapper">
+        <div class="spinner">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+    <h1 class="title">Create Your Football Match</h1>
+    <div class="container">
+        <div id="noPlayers">
+            <p>Enter name of the game : </p>
+            <input type="text" id="gameName" placeholder="Enter Game Name" required>
+            {% if error %}
+                <p>Game name already used</p>
+            {% endif %}
+            <br>
+            <p>Total number of players?</p>
+            <input type="text" id="noOfPlayers" placeholder="Enter number of players" required><br>
+            <button class="noPlayerSubmit" onclick="noPlayerGet()">Submit</button>
+        </div>
+        <form id="create-form" style="display: none;">
+
+            <h1 id="nameOfTheGame"></h1>
+
+            <div class="teamDet">
+                <div class="teamName">
+                    <label for="teamA-name">Team A Name: </label>
+                    <input type="text" id="teamA-name" placeholder="Enter Team A Name" required>
+                </div>
+
+                <h3>Enter Players for Team A</h3>
+                <div id="teamA-players-input">
+
+                </div>
+
+            </div>
+
+            <div class="teamDet">
+
+                <div class="teamName">
+                    <label for="teamB-name">Team B Name: </label>
+                    <input type="text" id="teamB-name" placeholder="Enter Team B Name" required>
+                </div>
+
+                <h3>Enter Players for Team B</h3>
+                <div id="teamB-players-input">
+
+                </div>
+
+            </div>
+            <button type="submit">Start Match</button>
+        </form>
+    </div>
+
+    <script src="{{url_for('static', filename='/javascripts/footBallPage.js' )}}"></script>
+
+</body>
+
+</html>

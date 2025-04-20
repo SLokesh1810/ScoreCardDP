@@ -1,0 +1,400 @@
+@import url('https://fonts.cdnfonts.com/css/maria-2');
+
+:root {
+    --bgcolor: #fefae0;
+    --txtcolor: #606c38;
+    --teamA: #007bff;
+    --teamB: #dc3545;
+}
+
+
+body {
+    font-family: 'Maria', sans-serif;
+    background-color: var(--bgcolor);
+    background-image: url("/static/photos/footballBG.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    text-align: center;
+    justify-content: center;
+    align-content: center;
+}
+
+.loader-wrapper{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: var(--bgcolor);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.spinner {
+    position: absolute;
+    width: 9px;
+    height: 9px;
+}
+
+.spinner div {
+    position: absolute;
+    width: 50%;
+    height: 150%;
+    background: #000000;
+    transform: rotate(calc(var(--rotation) * 1deg)) translate(0, calc(var(--translation) * 1%));
+    animation: spinner-fzua35 1s calc(var(--delay) * 1s) infinite ease;
+}
+
+.spinner div:nth-child(1) {
+    --delay: 0.1;
+    --rotation: 36;
+    --translation: 150;
+}
+
+.spinner div:nth-child(2) {
+    --delay: 0.2;
+    --rotation: 72;
+    --translation: 150;
+}
+
+.spinner div:nth-child(3) {
+    --delay: 0.3;
+    --rotation: 108;
+    --translation: 150;
+}
+
+.spinner div:nth-child(4) {
+    --delay: 0.4;
+    --rotation: 144;
+    --translation: 150;
+}
+
+.spinner div:nth-child(5) {
+    --delay: 0.5;
+    --rotation: 180;
+    --translation: 150;
+}
+
+.spinner div:nth-child(6) {
+    --delay: 0.6;
+    --rotation: 216;
+    --translation: 150;
+}
+
+.spinner div:nth-child(7) {
+    --delay: 0.7;
+    --rotation: 252;
+    --translation: 150;
+}
+
+.spinner div:nth-child(8) {
+    --delay: 0.8;
+    --rotation: 288;
+    --translation: 150;
+}
+
+.spinner div:nth-child(9) {
+    --delay: 0.9;
+    --rotation: 324;
+    --translation: 150;
+}
+
+.spinner div:nth-child(10) {
+    --delay: 1;
+    --rotation: 360;
+    --translation: 150;
+}
+
+@keyframes spinner-fzua35 {
+
+    0%,
+    10%,
+    20%,
+    30%,
+    50%,
+    60%,
+    70%,
+    80%,
+    90%,
+    100% {
+        transform: rotate(calc(var(--rotation) * 1deg)) translate(0, calc(var(--translation) * 1%));
+    }
+
+    50% {
+        transform: rotate(calc(var(--rotation) * 1deg)) translate(0, calc(var(--translation) * 1.5%));
+    }
+}
+
+h1 {
+    text-align: center;
+    font-size: 50px;
+    font-weight: 900;
+    letter-spacing: 5px;
+    color: var(--txtcolor);
+}
+
+.nameOfTheGame {
+    display: inline-block;
+    background-color: var(--txtcolor);
+    color: var(--bgcolor);
+    padding: 10px 20px;
+    border-radius: 10px;
+    text-align: center;
+    margin: auto;
+    margin-bottom: 20px;
+}
+
+.duration {
+    display: inline-block;
+    /* 👈 Wrap content only */
+    background-color: var(--txtcolor);
+    color: var(--bgcolor);
+    font-size: 20px;
+    padding: 20px;
+    margin: 20px auto;
+    /* Centering */
+    border-radius: 10px;
+    text-align: center;
+}
+
+.duration input {
+    padding: 5px;
+    border-radius: 10px;
+    font-size: 15px;
+    color: var(--txtcolor);
+    outline: none;
+    border: none;
+    width: 50px;
+}
+
+.duration button {
+    color: var(--txtcolor);
+    background-color: var(--bgcolor);
+    border-radius: 10px;
+    font-size: 15px;
+    padding: 5px;
+    border: 2px solid var(--bgcolor);
+    transition: all 0.4s ease-in;
+}
+
+.duration button:hover {
+    color: var(--bgcolor);
+    background-color: var(--txtcolor);
+}
+
+.container {
+    width: 80%;
+    margin: auto;
+    padding: 20px;
+}
+
+.scoreboard {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-bottom: 20px;
+    background: var(--txtcolor);
+    color: var(--bgcolor);
+    padding: 15px;
+    border-radius: 10px;
+}
+
+.team {
+    text-align: center;
+    flex: 1;
+    padding: 20px;
+}
+
+.team h2 {
+    margin: 0;
+}
+
+#teamAname,#teamBname {
+    background-color: var(--txtcolor);
+    color: var(--bgcolor);
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.score {
+    font-size: 36px;
+    font-weight: bold;
+}
+
+.stopwatch {
+    text-align: center;
+    background: var(--txtcolor);
+    padding: 10px;
+    border-radius: 8px;
+}
+
+.time {
+    font-size: 24px;
+    margin-bottom: 0;
+}
+
+#half-time{
+    margin: 0;
+    font-size: 20px;
+}
+
+.stopwatch button {
+    padding: 5px;
+    margin: 5px 0;
+    cursor: pointer;
+    font-size: 14px;
+    border-radius: 5px;
+}
+
+.timeBtns {
+    background-color: var(--bgcolor);
+    color: var(--txtcolor);
+    transition: all 0.5s;
+    border: 2px solid transparent;
+}
+
+.timeBtns:hover {
+    background-color: var(--txtcolor);
+    color: var(--bgcolor);
+    border: 2px solid var(--bgcolor);
+}
+
+.players {
+    display: flex;
+    justify-content: space-between;
+}
+
+.player-card {
+    color: var(--bgcolor);
+    padding: 10px;
+    margin: 10px;
+    border-radius: 20px;
+    box-shadow: 0 0 10px var(--txtcolor);
+    text-align: center;
+    flex: 1;
+    border: 3px solid transparent;
+    transition: all 0.6s;
+}
+
+.player-card:hover {
+    background-color: var(--txtcolor);
+    color: var(--bgcolor);
+    scale: 1.03;
+    box-shadow: 0 0 5px var(--txtcolor);
+}
+
+.player-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    padding: 5px;
+}
+
+#teamA-players .player-card{
+    background: var(--teamA);
+}
+
+#teamB-players .player-card{
+    background: var(--teamB);
+}
+
+.player-details {
+    display: none;
+    padding: 10px;
+    border-top: 1px solid #ddd;
+}
+
+.stats {
+    font-size: 14px;
+    margin: 5px 0;
+}
+
+.updateBtns {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin: 10px 0;
+}
+
+.uBtn {
+    display: inline-block;
+    padding: 6px 12px;
+    background-color: var(--bgcolor);
+    color: var(--txtcolor);
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 14px;
+    text-align: center;
+    min-width: 60px;
+    box-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+}
+
+.btn {
+    padding: 6px 12px;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s;
+    background-color: var(--bgcolor);
+}
+
+.btn-goal {
+    color: green;
+    background-color: white;
+}
+
+.btn-assist {
+    color: blue;
+    background-color: white;
+}
+
+.btn-yellow {
+    color: orange;
+    background-color: white;
+}
+
+.btn-red {
+    color: red;
+    background-color: white;
+}
+
+
+.goal-scorers,
+.red-card-receivers {
+    margin-top: 10px;
+    font-size: 14px;
+    color: #555;
+}
+
+.goal-scorer,
+.red-card-player {
+    margin: 2px 0;
+}
+
+.goal-time,
+.goal-scorer-name,
+.goal-scorer-at,
+.red-card-name {
+    color: white;
+    /* Bright white color for the scorer's name, time, and red card player */
+}
+
+#end-btn {
+    color: var(--bgcolor);
+    background-color: var(--txtcolor);
+    border-radius: 10px;
+    font-size: 15px;
+    padding: 15px;
+    border: 2px solid var(--txtcolor);
+    transition: all 0.4s ease-in;
+}
+
+#end-btn:hover {
+    color: var(--txtcolor);
+    background-color: var(--bgcolor);
+}

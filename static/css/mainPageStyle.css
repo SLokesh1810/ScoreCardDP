@@ -1,0 +1,531 @@
+@import url('https://fonts.cdnfonts.com/css/maria-2');
+
+:root {
+    --bgcolor: #fefae0;
+    --txtcolor: #606c38;
+}
+
+* {
+    font-family: 'Maria', 'sans-serif';
+}
+
+body {
+    font-family: 'Maria', 'sans-serif';
+    background-image: url("/static/photos/footballBG.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    background-color: var(--bgcolor);
+    color: var(--txtcolor);
+    transition: all ease-out 1s;
+}
+
+.loader-wrapper{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: var(--bgcolor);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.spinner {
+    position: absolute;
+    width: 9px;
+    height: 9px;
+}
+
+.spinner div {
+    position: absolute;
+    width: 50%;
+    height: 150%;
+    background: #000000;
+    transform: rotate(calc(var(--rotation) * 1deg)) translate(0, calc(var(--translation) * 1%));
+    animation: spinner-fzua35 1s calc(var(--delay) * 1s) infinite ease;
+}
+
+.spinner div:nth-child(1) {
+    --delay: 0.1;
+    --rotation: 36;
+    --translation: 150;
+}
+
+.spinner div:nth-child(2) {
+    --delay: 0.2;
+    --rotation: 72;
+    --translation: 150;
+}
+
+.spinner div:nth-child(3) {
+    --delay: 0.3;
+    --rotation: 108;
+    --translation: 150;
+}
+
+.spinner div:nth-child(4) {
+    --delay: 0.4;
+    --rotation: 144;
+    --translation: 150;
+}
+
+.spinner div:nth-child(5) {
+    --delay: 0.5;
+    --rotation: 180;
+    --translation: 150;
+}
+
+.spinner div:nth-child(6) {
+    --delay: 0.6;
+    --rotation: 216;
+    --translation: 150;
+}
+
+.spinner div:nth-child(7) {
+    --delay: 0.7;
+    --rotation: 252;
+    --translation: 150;
+}
+
+.spinner div:nth-child(8) {
+    --delay: 0.8;
+    --rotation: 288;
+    --translation: 150;
+}
+
+.spinner div:nth-child(9) {
+    --delay: 0.9;
+    --rotation: 324;
+    --translation: 150;
+}
+
+.spinner div:nth-child(10) {
+    --delay: 1;
+    --rotation: 360;
+    --translation: 150;
+}
+
+@keyframes spinner-fzua35 {
+
+    0%,
+    10%,
+    20%,
+    30%,
+    50%,
+    60%,
+    70%,
+    80%,
+    90%,
+    100% {
+        transform: rotate(calc(var(--rotation) * 1deg)) translate(0, calc(var(--translation) * 1%));
+    }
+
+    50% {
+        transform: rotate(calc(var(--rotation) * 1deg)) translate(0, calc(var(--translation) * 1.5%));
+    }
+}
+
+h1 {
+    text-align: center;
+    font-size: 40px;
+    font-weight: 900;
+    letter-spacing: 5px;
+    grid-column: 2 / 3;
+}
+
+#title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 10px;
+    margin-bottom: 10px;
+}
+
+.homelogo {
+    width: 30px;
+    height: auto;
+    background-color: var(--txtcolor);
+    border-radius: 10px;
+    padding: 5px;
+    transition: all 0.3s ease-in;
+}
+
+.homelogo:hover {
+    scale: 1.1;
+}
+
+.logo {
+    width: 250px;
+    margin: auto;
+}
+
+.divTopBtns {
+    display: flex;
+    border-radius: 30px;
+    box-shadow: 0 0px 15px var(--txtcolor);
+}
+
+/* LOGIN & SIGNUP Button Styles */
+#signUp {
+    border-radius: 0 30px 30px 0;
+    border: solid var(--txtcolor);
+    border-left: hidden;
+    z-index: 1;
+    overflow: hidden;
+    position: relative;
+    min-width: 35px;
+    transition: 0.5s;
+    color: var(--txtcolor);
+    background-color: var(--bgcolor);
+    box-shadow: inset 100% 0 0 0 var(--txtcolor);
+}
+
+#signUp:hover {
+    color: #fefae0;
+    box-shadow: inset 100px 0 0 0 var(--txtcolor);
+}
+
+#signUp:active {
+    transform: scale(0.9);
+}
+
+#login {
+    border-radius: 30px 0 0 30px;
+    border: solid var(--txtcolor);
+    border-right: hidden;
+    z-index: 1;
+    overflow: hidden;
+    position: relative;
+    min-width: 35px;
+    transition: 0.5s;
+    color: var(--txtcolor);
+    background-color: var(--bgcolor);
+    box-shadow: inset 100% 0 0 0 var(--txtcolor);
+}
+
+#login:hover {
+    color: var(--bgcolor);
+    box-shadow: inset -100px 0 0 0 var(--txtcolor);
+}
+
+#login:active {
+    transform: scale(0.9);
+}
+
+.logoutbtn {
+    border-radius: 30px;
+    border: 2px solid transparent;
+    font-size: 16px;
+    margin: 0;
+    z-index: 1;
+    overflow: hidden;
+    position: relative;
+    max-width: 100px;
+    transition: 0.5s;
+    padding: 3px 7px;
+    font-size: 15px;
+    color: var(--bgcolor);
+    background-color: var(--txtcolor);
+    box-shadow: inset 100% 0 0 0 var(--bgcolor);
+    transition: all ease-in .5s;
+}
+
+.logoutbtn:hover {
+    display: block;
+    color: var(--txtcolor);
+    border: 2px solid var(--txtcolor);
+    box-shadow: inset 100px 0 0 0 var(--bgcolor);
+}
+
+
+.logoutbtn:active {
+    transform: scale(0.9);
+}
+
+.topbtns {
+    padding: 10px 15px;
+    border: transparent;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 550;
+    transition: (0.5s);
+}
+
+.proImg {
+    border-radius: 15px;
+    width: 30px;
+    height: 30px;
+}
+
+.profile {
+    display: inline-flex;
+    transition: ease-out 0.6s;
+    background-color: transparent;
+    border-radius: 20px;
+    margin-right: 0;
+    max-width: 200px;
+    font-size: 15px;
+    background-color: var(--bgcolor);
+    border: 3px solid transparent;
+    box-shadow: 0 0px 10px var(--txtcolor);
+}
+
+#username {
+    padding: 3px;
+    padding-top: 4.5px;
+}
+
+.topnav {
+    margin-top: 15px;
+    overflow: hidden;
+    cursor: pointer;
+    margin-bottom: 0;
+    margin: 0 100px;
+    padding: 0;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    box-shadow: 0 0px 15px var(--txtcolor);
+    background-color: var(--txtcolor);
+    border: 3px solid var(--txtcolor);
+    border-bottom: 0;
+}
+
+/* Style the links inside the navigation bar */
+.topnav a {
+    float: left;
+    color: var(--bgcolor);
+    display: block;
+    text-align: center;
+    padding: 20px;
+    text-decoration: none;
+    font-size: 17px;
+    background-color: var(--txtcolor);
+    margin: 0;
+    transition: all ease-out .5s;
+}
+
+/* Change the color of links on hover */
+.topnav a:hover {
+    background-color: var(--bgcolor);
+    color: var(--txtcolor);
+    text-shadow: 0 0 0 var(--txtcolor);
+}
+
+.cricIcon {
+    color: transparent;
+    text-shadow: 0 0 0 var(--bgcolor);
+    transition: all ease-out .5s;
+}
+
+.cricLink:hover .cricIcon {
+    text-shadow: 0 0 0 var(--txtcolor);
+}
+
+.ContentBox {
+    flex-direction: column;
+    align-items: center;
+    margin-top: 0;
+    background-color: var(--bgcolor);
+    border-bottom-right-radius: 30px;
+    border-bottom-left-radius: 30px;
+    display: flex;
+    justify-content: center;
+    padding: 20px 0 0 0;
+    border: 3px solid var(--txtcolor);
+    border-top: hidden;
+    margin: 0 100px;
+    box-shadow: 0 0px 15px var(--txtcolor);
+}
+
+.ContentBox h2 {
+    color: var(--txtcolor);
+}
+
+.addNew {
+    padding: 10px 0;
+    font-size: large;
+    width: 300px;
+    color: var(--bgcolor);
+    border: 3px solid var(--txtcolor);
+    border-radius: 30px;
+    cursor: pointer;
+    position: relative;
+    background-color: var(--txtcolor);
+    transition: all .5s;
+    overflow: hidden;
+}
+
+.addNew:hover {
+    color: var(--txtcolor);
+    background-color: var(--bgcolor);
+    box-shadow: 0 0px 10px var(--txtcolor);
+}
+
+.addNew:active {
+    scale: 1;
+}
+
+.recentGameContainer {
+    color: var(--txtcolor);
+    margin: auto;
+    margin-top: 30px;
+    border-radius: 20px;
+    width: 350px;
+    box-shadow: 0 0 10px var(--txtcolor);
+    background-color: var(--bgcolor);
+    transition: all 0.3s;
+}
+
+.recentGameContainer:hover {
+    box-shadow: 0 0 20px var(--txtcolor);
+    transform: scale(1.03);
+}
+
+.gameName {
+    text-align: left;
+    margin: 0;
+    font-size: 20px;
+    margin-bottom: 20px;
+    padding: 10px 0 0 10px;
+    border-radius: 20px 20px 0 0;
+    font-weight: 600;
+}
+
+.scoreNteam {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 18px;
+    height: 60px;
+    width: 50%;
+    margin: auto;
+    text-align: center;
+    margin-bottom: 0;
+}
+
+.endtime {
+    text-align: center;
+    margin-top: 0;
+}
+
+.dateNtime {
+    text-align: right;
+    margin-right: 5px;
+}
+
+.teamA,
+.teamB {
+    padding: 20px;
+}
+
+#score {
+    padding: 10px;
+    width: 50px;
+}
+
+.recentGames {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    width: 90%;
+    margin: auto;
+    padding: 20px;
+}
+
+.recentGameCon {
+    color: var(--txtcolor);
+    margin: auto;
+    margin-top: 30px;
+    border-radius: 20px;
+    width: 400px;
+    box-shadow: 0 0 10px var(--txtcolor);
+    background-color: var(--bgcolor);
+    transition: all 0.3s;
+    padding: 20px;
+}
+
+hr {
+    border: none;
+    height: 1px;
+    background-color: var(--txtcolor);
+    padding: 1px;
+    margin: 10px 0;
+}
+
+.recentGameCon:hover {
+    box-shadow: 0 0 20px var(--txtcolor);
+    transform: scale(1.03);
+}
+
+.cricGameName {
+    margin-top: 0;
+}
+
+.matchRow {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 6px 0;
+}
+
+.teamName {
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.score {
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+.winnerDet {
+    text-align: center;
+    margin: 20px 0 0 0;
+}
+
+/* ✅ Responsive Design: Adjust LOGIN & SIGNUP Buttons on Small Screens */
+@media screen and (max-width: 600px) {
+    .divTopBtns {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #login,
+    #signUp {
+        width: 100%;
+        text-align: center;
+        border: solid;
+    }
+
+    #login {
+        border-radius: 30px 30px 0 0;
+        border: solid var(--txtcolor);
+    }
+
+    #login:hover {
+        box-shadow: inset 0 -100px 0 0 var(--txtcolor);
+        border: solid var(--txtcolor);
+    }
+
+    #signUp {
+        border-radius: 0 0 30px 30px;
+        border: solid var(--txtcolor);
+    }
+
+    #signUp:hover {
+        box-shadow: inset 0 100px 0 0 var(--txtcolor);
+        border: solid var(--txtcolor);
+    }
+
+    .topnav {
+        margin: 0 40px;
+    }
+
+    .ContentBox {
+        margin: 0 40px;
+    }
+}
