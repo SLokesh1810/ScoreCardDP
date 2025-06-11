@@ -25,7 +25,7 @@ INTERFACE OF THE PROJECT:
 
     
   - CRICKET
-  ![Screenshot 2025-06-11 161027](https://github.com/user-attachments/assets/3041868d-3ff2-433a-ab37-00f927326fd5)
+  ![Screenshot 2025-06-11 161027](https://github.com/user-attachments/assets/69feffcd-723b-4aa1-8a70-cde879e29260)
 
   ![Screenshot 2025-06-11 161101](https://github.com/user-attachments/assets/3af66708-b2a2-45dc-8a68-baf248067f00)
 
@@ -34,7 +34,7 @@ INTERFACE OF THE PROJECT:
   ![Screenshot 2025-06-11 161417](https://github.com/user-attachments/assets/579517a5-0559-449c-acd0-4e0e110c427b)
 
   - FOOTBALL
-  ![Screenshot 2025-06-11 161119](https://github.com/user-attachments/assets/7cc796ba-a168-4018-baa0-21484428bbc8)
+  ![Screenshot 2025-06-11 161119](https://github.com/user-attachments/assets/4dc93fc6-7bb5-43f2-b3db-e112cf847680)
 
   ![Screenshot 2025-06-11 161142](https://github.com/user-attachments/assets/d24e1434-b1b3-4d14-a6da-c991c4704fe8)
 
